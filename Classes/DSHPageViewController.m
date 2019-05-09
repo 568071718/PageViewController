@@ -25,7 +25,7 @@
 
 @interface DSHPageViewController () <UICollectionViewDelegateFlowLayout ,UICollectionViewDataSource>
 
-@property (strong ,nonatomic ,readonly) _DSHPageViewControllerCollectionView *collectionView;
+@property (strong ,nonatomic) _DSHPageViewControllerCollectionView *collectionView;
 @end
 
 @implementation DSHPageViewController
@@ -45,23 +45,7 @@
 #pragma mark - controller
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.minimumLineSpacing = 0;
-    layout.minimumInteritemSpacing = 0;
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    _collectionView = [[_DSHPageViewControllerCollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
-    _collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
-    _collectionView.showsVerticalScrollIndicator = NO;
-    _collectionView.showsHorizontalScrollIndicator = NO;
-    _collectionView.bounces = NO;
-    _collectionView.pagingEnabled = YES;
-    _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
-    _collectionView.backgroundColor = [UIColor clearColor];
-    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"page_view_cell"];
-    [self.view addSubview:_collectionView];
+    [self.view addSubview:self.collectionView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,6 +66,7 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
+    _collectionView.frame = self.view.bounds;
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_currentViewControllerIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 }
 
@@ -110,7 +95,27 @@
 
 #pragma mark - getter
 - (UIScrollView *)scrollView; {
-    return _collectionView;
+    return self.collectionView;
+}
+
+- (_DSHPageViewControllerCollectionView *)collectionView; {
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.minimumLineSpacing = 0;
+        layout.minimumInteritemSpacing = 0;
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        _collectionView = [[_DSHPageViewControllerCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+        _collectionView.showsVerticalScrollIndicator = NO;
+        _collectionView.showsHorizontalScrollIndicator = NO;
+        _collectionView.bounces = NO;
+        _collectionView.pagingEnabled = YES;
+        _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
+        _collectionView.backgroundColor = [UIColor clearColor];
+        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"page_view_cell"];
+    } return _collectionView;
 }
 
 #pragma mark - scroll view
