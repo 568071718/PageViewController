@@ -84,9 +84,13 @@
 }
 
 - (void)setCurrentViewControllerIndex:(NSInteger)currentViewControllerIndex animated:(BOOL)animated; {
+    [self setCurrentViewControllerIndex:currentViewControllerIndex animated:animated callDelegate:!animated];
+}
+
+- (void)setCurrentViewControllerIndex:(NSInteger)currentViewControllerIndex animated:(BOOL)animated callDelegate:(BOOL)callDelegate; {
     _currentViewControllerIndex = currentViewControllerIndex;
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_currentViewControllerIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:animated];
-    if (!animated) {
+    if (!animated && callDelegate) {
         if ([_delegate respondsToSelector:@selector(pageViewController:currentViewControllerIndexDidChange:)]) {
             [_delegate pageViewController:self currentViewControllerIndexDidChange:_currentViewControllerIndex];
         }

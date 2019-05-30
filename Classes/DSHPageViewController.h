@@ -24,4 +24,5 @@
 @property (weak ,nonatomic) id <DSHPageViewControllerDelegate>delegate;
 @property (assign ,nonatomic) NSInteger currentViewControllerIndex;
 - (void)setCurrentViewControllerIndex:(NSInteger)currentViewControllerIndex animated:(BOOL)animated;
+- (void)setCurrentViewControllerIndex:(NSInteger)currentViewControllerIndex animated:(BOOL)animated callDelegate:(BOOL)callDelegate; // callDelegate 是否触发代理回调 (仅在设置 animated 参数为 NO 的时候生效, 默认: YES)
 @end
