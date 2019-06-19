@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		895E28AB22BA177B006FF867 /* Demo1Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 895E28AA22BA177B006FF867 /* Demo1Controller.m */; };
+		895E28AE22BA1842006FF867 /* Demo2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 895E28AD22BA1842006FF867 /* Demo2Controller.m */; };
 		897430E12282734100304BC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 897430E02282734100304BC5 /* AppDelegate.m */; };
 		897430E42282734100304BC5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897430E32282734100304BC5 /* ViewController.m */; };
 		897430E72282734100304BC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 897430E52282734100304BC5 /* Main.storyboard */; };
@@ -16,7 +18,6 @@
 		897430F92282734400304BC5 /* pageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897430F82282734400304BC5 /* pageViewControllerTests.m */; };
 		897431042282734400304BC5 /* pageViewControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897431032282734400304BC5 /* pageViewControllerUITests.m */; };
 		89743117228274F500304BC5 /* DSHPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89743116228274F500304BC5 /* DSHPageViewController.m */; };
-		8974311A22827DDD00304BC5 /* DemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8974311922827DDD00304BC5 /* DemoController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		895E28A922BA177B006FF867 /* Demo1Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demo1Controller.h; sourceTree = "<group>"; };
+		895E28AA22BA177B006FF867 /* Demo1Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demo1Controller.m; sourceTree = "<group>"; };
+		895E28AC22BA1842006FF867 /* Demo2Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demo2Controller.h; sourceTree = "<group>"; };
+		895E28AD22BA1842006FF867 /* Demo2Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demo2Controller.m; sourceTree = "<group>"; };
 		897430DC2282734100304BC5 /* pageViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pageViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		897430DF2282734100304BC5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		897430E02282734100304BC5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -55,8 +60,6 @@
 		897431052282734400304BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89743115228274F500304BC5 /* DSHPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSHPageViewController.h; sourceTree = "<group>"; };
 		89743116228274F500304BC5 /* DSHPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSHPageViewController.m; sourceTree = "<group>"; };
-		8974311822827DDD00304BC5 /* DemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoController.h; sourceTree = "<group>"; };
-		8974311922827DDD00304BC5 /* DemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +115,10 @@
 				897430E02282734100304BC5 /* AppDelegate.m */,
 				897430E22282734100304BC5 /* ViewController.h */,
 				897430E32282734100304BC5 /* ViewController.m */,
-				8974311822827DDD00304BC5 /* DemoController.h */,
-				8974311922827DDD00304BC5 /* DemoController.m */,
+				895E28A922BA177B006FF867 /* Demo1Controller.h */,
+				895E28AA22BA177B006FF867 /* Demo1Controller.m */,
+				895E28AC22BA1842006FF867 /* Demo2Controller.h */,
+				895E28AD22BA1842006FF867 /* Demo2Controller.m */,
 				897430E52282734100304BC5 /* Main.storyboard */,
 				897430E82282734300304BC5 /* Assets.xcassets */,
 				897430EA2282734300304BC5 /* LaunchScreen.storyboard */,
@@ -281,10 +286,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				897430E42282734100304BC5 /* ViewController.m in Sources */,
-				8974311A22827DDD00304BC5 /* DemoController.m in Sources */,
+				895E28AB22BA177B006FF867 /* Demo1Controller.m in Sources */,
 				89743117228274F500304BC5 /* DSHPageViewController.m in Sources */,
 				897430EF2282734300304BC5 /* main.m in Sources */,
 				897430E12282734100304BC5 /* AppDelegate.m in Sources */,
+				895E28AE22BA1842006FF867 /* Demo2Controller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

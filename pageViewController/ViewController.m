@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import "DSHPageViewController.h"
-#import "DemoController.h"
+#import "Demo1Controller.h"
+#import "Demo2Controller.h"
 
 @interface ViewController ()
 
@@ -20,11 +21,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    DemoController *vc1 = [[DemoController alloc] initWithIdentifier:28];
-    DemoController *vc2 = [[DemoController alloc] initWithIdentifier:29];
-    DemoController *vc3 = [[DemoController alloc] initWithIdentifier:30];
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.itemSize = CGSizeMake(80, 80);
+    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    layout.minimumLineSpacing = 10;
+    layout.minimumInteritemSpacing = 10;
+    Demo2Controller *vc1 = [[Demo2Controller alloc] initWithCollectionViewLayout:layout];
+    Demo1Controller *vc2 = [[Demo1Controller alloc] initWithStyle:UITableViewStylePlain];
+    Demo1Controller *vc3 = [[Demo1Controller alloc] initWithStyle:UITableViewStyleGrouped];
     NSArray *viewControllers = @[vc1 ,vc2 ,vc3];
-    DSHPageViewController *pageViewController = [[DSHPageViewController alloc] initWithViewControllers:viewControllers currentViewControllerIndex:1];
+    DSHPageViewController *pageViewController = [[DSHPageViewController alloc] initWithViewControllers:viewControllers];
     [self.view addSubview:pageViewController.view];
     pageViewController.view.frame = [UIScreen mainScreen].bounds;
     [self addChildViewController:pageViewController];
