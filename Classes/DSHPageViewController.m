@@ -90,6 +90,7 @@
 - (void)setCurrentViewControllerIndex:(NSInteger)currentViewControllerIndex animated:(BOOL)animated callDelegate:(BOOL)callDelegate; {
     _currentViewControllerIndex = currentViewControllerIndex;
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_currentViewControllerIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:animated];
+    [self currentViewControllerIndexDidChange:_currentViewControllerIndex];
     if (!animated && callDelegate) {
         if ([_delegate respondsToSelector:@selector(pageViewController:currentViewControllerIndexDidChange:)]) {
             [_delegate pageViewController:self currentViewControllerIndexDidChange:_currentViewControllerIndex];
@@ -127,6 +128,7 @@
     NSInteger currentViewControllerIndex = round(scrollView.contentOffset.x / scrollView.frame.size.width);
     if (_currentViewControllerIndex != currentViewControllerIndex) {
         _currentViewControllerIndex = currentViewControllerIndex;
+        [self currentViewControllerIndexDidChange:_currentViewControllerIndex];
         if ([_delegate respondsToSelector:@selector(pageViewController:currentViewControllerIndexDidChange:)]) {
             [_delegate pageViewController:self currentViewControllerIndexDidChange:_currentViewControllerIndex];
         }
@@ -161,4 +163,6 @@
     [viewController removeFromParentViewController];
 }
 
+#pragma mark -
+- (void)currentViewControllerIndexDidChange:(NSInteger)currentViewControllerIndex; {}
 @end
