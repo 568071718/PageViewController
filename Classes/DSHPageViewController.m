@@ -39,6 +39,7 @@
     if (self) {
         _viewControllers = viewControllers;
         _currentViewControllerIndex = currentViewControllerIndex;
+        self.automaticallyAdjustsScrollViewInsets = NO;
     } return self;
 }
 
@@ -67,7 +68,10 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     _collectionView.frame = self.view.bounds;
-    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_currentViewControllerIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    CGPoint offset = _collectionView.contentOffset;
+    offset.x = _collectionView.frame.size.width * _currentViewControllerIndex;
+    _collectionView.contentOffset = offset;
+    [_collectionView reloadData];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -119,6 +123,9 @@
         _collectionView.pagingEnabled = YES;
         _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
         _collectionView.backgroundColor = [UIColor clearColor];
+        if (@available(iOS 11.0, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"page_view_cell"];
     } return _collectionView;
 }
@@ -126,6 +133,7 @@
 #pragma mark - scroll view
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView; {
     NSInteger currentViewControllerIndex = round(scrollView.contentOffset.x / scrollView.frame.size.width);
+    if (currentViewControllerIndex >= _viewControllers.count) return;
     if (_currentViewControllerIndex != currentViewControllerIndex) {
         _currentViewControllerIndex = currentViewControllerIndex;
         [self currentViewControllerIndexDidChange:_currentViewControllerIndex];
