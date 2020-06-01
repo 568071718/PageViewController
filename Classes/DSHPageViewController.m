@@ -21,6 +21,18 @@
         [super setDelegate:delegate];
     }
 }
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    if (self.contentOffset.x <= 0) {
+        if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
+            UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)gestureRecognizer;
+            CGPoint velocity = [pan velocityInView:gestureRecognizer.view];
+            if (velocity.x > 0) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
 @end
 
 @interface DSHPageViewController () <UICollectionViewDelegateFlowLayout ,UICollectionViewDataSource>
