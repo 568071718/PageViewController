@@ -20,6 +20,7 @@
 - (id)initWithViewControllers:(NSArray <UIViewController *>*)viewControllers currentViewControllerIndex:(NSInteger)currentViewControllerIndex;
 @property (strong ,nonatomic ,readonly) NSArray <UIViewController *>*viewControllers;
 @property (readonly) UIScrollView *scrollView;
+@property (readonly) UIViewController *currentViewController;
 
 @property (weak ,nonatomic) id <DSHPageViewControllerDelegate>delegate;
 @property (assign ,nonatomic) NSInteger currentViewControllerIndex;

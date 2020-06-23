@@ -142,6 +142,13 @@
     } return _collectionView;
 }
 
+- (UIViewController *)currentViewController; {
+    if (_currentViewControllerIndex < _viewControllers.count) {
+        return _viewControllers[_currentViewControllerIndex];
+    }
+    return nil;
+}
+
 #pragma mark - scroll view
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView; {
     NSInteger currentViewControllerIndex = round(scrollView.contentOffset.x / scrollView.frame.size.width);
